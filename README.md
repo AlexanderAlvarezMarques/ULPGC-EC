@@ -3,7 +3,7 @@
 ## Welcome to the repository of practical EC jobs
 
 My name is Alexander Álvarez. I created this place for an easy access of Estructura de Computadores documentation.
-Here you will find all the solutions of the practices of the year 2018-2019. You can colaborate here for helping the
+Here you will find all the solutions to the practices of the year 2018-2019. You can colaborate here for helping the
 other classmates in the next generations.
 
 ## Bienvenidos al repositorio de prácticas de EC.
