@@ -1,4 +1,22 @@
-	.global _start
+despIzq:
+
+	# Cogemos y desplazamos a la izq el registro de led's verdes
+	ldw r5, 0(r4)
+	slli r5, r5, 1
+
+	# Se paso del limite de 8 bits
+	movia r6, 128
+	bgt r5, r6, reiniciar
+	stw r5, 0(r4)
+	ret
+
+reiniciar:
+
+	addi r5, r0, 1
+	stw r5, 0(r4)
+	ret
+
+.global _start
 
 _start:
 
@@ -24,9 +42,7 @@ cBucle:
 desp:
 
 	# Cargamos y desplazamos el led verde
-	ldw r5, 0(r4)
-	slri r5, 1
-	stw r5, 0(r4)
+	call despIzq
 
 	# Volvemos al bucle
 	br contador
