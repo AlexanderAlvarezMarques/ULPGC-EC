@@ -1,9 +1,8 @@
-# Rutina de interrupciones
 .section .reset, "ax"
 
 	movia r2, _start
 	jmp r2
-    
+
 .section .exceptions, "ax"
 .global EXCEPTIONS_HANDLER
 
@@ -50,26 +49,30 @@ botones:
 
 	movia r8, 8
 	and r9, r7, r8
-	beq r9, r8, boton3
+	beq r9, r8, boton_3
 
+	# Aqui no deberia llegar nunca
 	br fin
 
 boton_3:
 
+	# Carga del valor 3
 	ldb r8, 3(r6)
-	stw r8, 12(sp)
+	stw r8, 0(r4)
 	br fin
 
 boton_2:
 
+	# Carga del valor 2
 	ldb r8, 2(r6)
-	stw r8, 12(sp)
+	stw r8, 0(r4)
 	br fin
 
 boton_1:
 
+	# Carga del valor 1
 	ldb r8, 1(r6)
-	stw r8, 12(sp)
+	stw r8, 0(r4)
 
 fin:
 
@@ -85,6 +88,7 @@ fin:
     # Retorno al programa
     eret
 
+.text
 .global _start
 _start:
 	
@@ -109,13 +113,13 @@ _start:
     wrctl status, r7
     
     # Usamos r8 como registro de escritura para display
-    ldbio r8, 0(r6)
+    ldb r8, 0(r6)
+    stwio r8, 0(r4)
     
-mostrarDisplay:
-
-	stwio r8, 0(r4)
-    br mostrarDisplay
+loop: br loop
     
 .data
 
 numeros:	.byte	0x3F,0x06,0x5B,0x4F,0x36,0x3D,0x7C,0x03,0x7F,0x6F # 0,1,2,3,4,5,6,7,8,9
+
+.end
