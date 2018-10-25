@@ -58,21 +58,21 @@ boton_3:
 
 	# Carga del valor 3
 	ldb r8, 3(r6)
-	stw r8, 0(r4)
+	stwio r8, 0(r4)
 	br fin
 
 boton_2:
 
 	# Carga del valor 2
 	ldb r8, 2(r6)
-	stw r8, 0(r4)
+	stwio r8, 0(r4)
 	br fin
 
 boton_1:
 
 	# Carga del valor 1
 	ldb r8, 1(r6)
-	stw r8, 0(r4)
+	stwio r8, 0(r4)
 
 fin:
 
